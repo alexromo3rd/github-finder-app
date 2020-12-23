@@ -8,6 +8,8 @@ class Search extends Component {
 
   static propTypes = {
     searchUsers: PropTypes.func.isRequired,
+    clearUsers: PropTypes.func.isRequired,
+    showClear: PropTypes.bool.isRequired,
   }
 
   // e.target.name uses the name of the input field, in this case 'text' to setState for text
@@ -21,6 +23,7 @@ class Search extends Component {
   }
 
   render() {
+    const { showClear, clearUsers } = this.props;
     return (
       <div>
         <form onSubmit={this.onSubmit} className="form">
@@ -37,6 +40,9 @@ class Search extends Component {
             className="btn btn-dark btn-block" 
            />
         </form>
+        {showClear && (
+          <button className="btn btn-light btn-block" onClick={clearUsers}>Clear</button>
+        )}
       </div>
     );
   }
